@@ -1,0 +1,9 @@
+plugins:
+  - name: preset-default
+    params:
+      overrides:
+        removeViewBox: false
+        removeDimensions: true
+        removeRasterImages: false
+        removeUnknownsAndDefaults: true
+        removeUselessDefs: true
