@@ -17,7 +17,7 @@ export const Text = styled.p<TextProps>`
   color: ${({ color }) => (color ? color : theme.colors.dark[1])};
   font-size: ${({ fontSize = "16px" }) => fontSize};
   font-weight: ${({ fontWeight = "400" }) => fontWeight};
-  line-height: ${({ lineHeight = "1.5" }) => lineHeight};
+  line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : "1.5")};
   text-align: ${({ textAlign = "left" }) => textAlign};
   margin: ${({ margin = "0" }) => margin};
   padding: ${({ padding = "0" }) => padding};

@@ -15,7 +15,7 @@ export const StyledInput = styled.textarea`
   width: 340px;
   box-sizing: border-box;
   height: 48px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   outline: none;
   color: ${theme.colors.dark[1]};
   font-size: 16px;

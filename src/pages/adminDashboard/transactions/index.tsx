@@ -1,22 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { ContentContainer, ListContainer, MainContainer } from "./styles";
+import {
+  ContentContainer,
+  ListContainer,
+  MainContainer,
+  PaginationContainer,
+} from "./styles";
 import { Header } from "@/components/header";
-import { useState } from "react";
 import { Text } from "@/components/text/styled";
 import { ListRow } from "./components/listRow";
+import Pagination from "@/components/pagination";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Transactions = ({ user }: any) => {
-  const [link, setLink] = useState("");
-  const [rate, setRate] = useState("");
-
-  const navigate = useNavigate();
-
-  // if (!user) {
-  //   navigate("/");
-  //   return null;
-  // }
-
+const Transactions = () => {
   return (
     <MainContainer>
       <Header />
@@ -77,6 +70,9 @@ const Transactions = ({ user }: any) => {
           ))}
         </ListContainer>
       </ContentContainer>
+      <PaginationContainer>
+        <Pagination itemsPerPage={7} onPageChange={() => {}} totalItems={21} />
+      </PaginationContainer>
     </MainContainer>
   );
 };

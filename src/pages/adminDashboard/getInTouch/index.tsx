@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ContentContainer, MainContainer } from "./styles";
 import { Header } from "@/components/header";
 import { Input } from "@/components/input";
@@ -7,18 +6,10 @@ import { Button } from "@/components/button";
 import { Divider } from "@/components/divider/styled";
 import { TextArea } from "@/components/textArea";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const GetInTouch = ({ user }: any) => {
+const GetInTouch = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-
-  const navigate = useNavigate();
-
-  // if (!user) {
-  //   navigate("/");
-  //   return null;
-  // }
 
   return (
     <MainContainer>
@@ -43,7 +34,7 @@ const GetInTouch = ({ user }: any) => {
           placeholder="Type your message"
         />
         <Divider height={9} />
-        <Button title="Create Link" />
+        <Button title="Send message" />
       </ContentContainer>
     </MainContainer>
   );
