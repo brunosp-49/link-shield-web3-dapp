@@ -1,13 +1,19 @@
+import { theme } from "@/assets/colors";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
-  width: 415px;
+  width: 500px;
   margin-top: 46px;
   align-items: center;
   justify-content: space-between;
   svg {
     cursor: pointer;
+  }
+  svg:focus,
+  svg:active {
+    border: none;
+    outline: none;
   }
 `;
 
@@ -28,5 +34,17 @@ export const ActionsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 38px;
+  width: 65px;
+`;
+
+export const Status = styled.div<{ active: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: ${({ active }) =>
+    active ? theme.colors.green[1] : theme.colors.orange[1]};
+  width: 19px;
+  height: 19px;
+  user-select: none;
 `;

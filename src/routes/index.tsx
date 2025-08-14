@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster, } from "sonner";
+import { Toaster } from "sonner";
 import LandingPage from "../pages/landingPage";
 import RedirectPage from "../pages/redirectPage";
 import Layout from "@/components/sidebar";
@@ -7,9 +7,11 @@ import NewLink from "@/pages/adminDashboard/newLink";
 import MyLinks from "@/pages/adminDashboard/myLinks";
 import GetInTouch from "@/pages/adminDashboard/getInTouch";
 import Transactions from "@/pages/adminDashboard/transactions";
+import { Provider } from "react-redux";
+import store from "@/redux/store";
 
 export const Router = () => (
-  <div>
+  <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -23,5 +25,5 @@ export const Router = () => (
       </Routes>
     </BrowserRouter>
     <Toaster position="bottom-left" richColors />
-  </div>
+  </Provider>
 );
