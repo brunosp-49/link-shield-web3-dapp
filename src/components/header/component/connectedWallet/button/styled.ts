@@ -13,7 +13,7 @@ export const CommonButton = styled.div<ButtonContainerProps>`
   border-radius: 8px;
   min-width: 141px;
   box-sizing: border-box;
-  height: 50px;
+  height: 48px;
   padding: 0px 20px;
   display: flex;
   align-items: center;

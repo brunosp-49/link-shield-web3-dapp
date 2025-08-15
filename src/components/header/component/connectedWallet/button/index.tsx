@@ -7,11 +7,13 @@ import { Spinner } from "@/components/spinner";
 interface ButtonProps {
   onClick?: () => void;
   isLoading?: boolean;
+  title: string;
 }
 
 export const ButtonWalletConnect: React.FC<ButtonProps> = ({
   onClick,
   isLoading = false,
+  title,
 }) => {
   return (
     <CommonButton
@@ -34,7 +36,7 @@ export const ButtonWalletConnect: React.FC<ButtonProps> = ({
             }}
           />
           <Text fontSize="15px" fontWeight="bold" color={theme.colors.light[1]}>
-            0xb3...9Eqf
+            {title}
           </Text>
         </>
       )}

@@ -1,26 +1,15 @@
-import { Text } from "@/components/text/styled";
-import { ButtonContainer, MainContainer, TitleContainer } from "./styled";
-import { theme } from "@/assets/colors";
-import { applyOpacity } from "@/utils/colors";
-import { Button } from "@/components/button";
 import { useLocation } from "react-router-dom";
-import { WalletOptionsModal } from "./compoenent/walletOptionsModal";
-import { useState } from "react";
-import { ButtonWalletConnect } from "./compoenent/connectedWallet/button";
-import { WalletConnectedModal } from "./compoenent/connectedWallet/walletModalConnected";
+import { ButtonContainer, MainContainer, TitleContainer } from "./styled";
+import { Text } from "../text/styled";
+import { applyOpacity } from "@/utils/colors";
+import { theme } from "@/assets/colors";
+import { ButtonWalletConnect } from "./component/connectedWallet/button";
+import { Button } from "../button";
+import { useWallet } from "@/hooks/useWallet";
 
 export const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsLoading(true);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const { isLoading, isConnected, address, connect, openAccountModal } =
+    useWallet();
 
   const location = useLocation();
   const currentPage = location.pathname;
@@ -50,30 +39,25 @@ export const Header = () => {
           </>
         )}
       </TitleContainer>
+
       <ButtonContainer>
-        {currentPage === "/" ? (
-          <Button
-            title="Connect Wallet"
-            onClick={() => handleOpenModal()}
-            isLoading={isLoading}
+        {isConnected ? (
+          <ButtonWalletConnect
+            title={
+              address
+                ? `${address.slice(0, 6)}...${address.slice(-4)}`
+                : "Connected"
+            }
+            onClick={openAccountModal}
           />
         ) : (
-          <ButtonWalletConnect
-            onClick={() => handleOpenModal()}
+          <Button
+            title="Connect Wallet"
+            onClick={connect}
             isLoading={isLoading}
           />
         )}
       </ButtonContainer>
-      <WalletOptionsModal
-        isOpen={isModalOpen && currentPage === "/"}
-        onClose={handleCloseModal}
-        setIsLoading={setIsLoading}
-      />
-      <WalletConnectedModal
-        isOpen={isModalOpen && currentPage !== "/"}
-        onClose={handleCloseModal}
-        setIsLoading={setIsLoading}
-      />
     </MainContainer>
   );
 };

@@ -14,7 +14,7 @@ export const StyledInput = styled.input`
   border-radius: 10.8px;
   width: 340px;
   box-sizing: border-box;
-  height: 48px;
+  height: 46px;
   padding: 0px 16px;
   outline: none;
   color: ${theme.colors.dark[1]};
